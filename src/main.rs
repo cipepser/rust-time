@@ -8,5 +8,11 @@ fn main() {
 
     println!("{}", utc_datetime);
     println!("{}", utc_date);
+
+    let local_datetime: DateTime<Local> = Local::now();
+    let local_date: Date<Local> = Local::today();
+
+    println!("{}", local_datetime);
+    println!("{}", local_date);
 }
 
