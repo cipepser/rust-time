@@ -70,5 +70,8 @@ fn main() {
     println!("local: {}", local); // local: 2018-12-07 19:31:28 +09:00
     let dt4: DateTime<Utc> = local.with_timezone(&Utc);
     println!("dt4: {}", dt4); // dt4: 2018-12-07 10:31:28 UTC
+
+    let local: DateTime<Local> = Local.timestamp(1_500_000_000, 0);
+    println!("local: {}", local); // local: 2017-07-14 11:40:00 +09:00
 }
 
