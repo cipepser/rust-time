@@ -28,5 +28,21 @@ fn main() {
 
     let text = Utc::now().format("%Y年%m月%d日 %H時%M分%S秒 %Z").to_string();
     println!("{}", text); // 2018年12月09日 01時25分59秒 UTC
+
+    let utc: DateTime<Utc> = Utc::now();
+    println!("[DateTime<Utc> -> NaiveDateTime] utc: {:?}", utc); // [DateTime<Utc> -> NaiveDateTime] utc: 2018-12-09T01:37:57.621780Z
+    let naive: NaiveDateTime = utc.naive_local(); // タイムゾーンがUTUなのでnaive_localとnaive_utcが一致する。
+    println!("[DateTime<Utc> -> NaiveDateTime] naive_local: {:?}", naive); // [DateTime<Utc> -> NaiveDateTime] naive_local: 2018-12-09T01:37:57.621780
+    let naive: NaiveDateTime = utc.naive_utc();
+    println!("[DateTime<Utc> -> NaiveDateTime] naive_utc: {:?}", naive); // [DateTime<Utc> -> NaiveDateTime] naive_utc: 2018-12-09T01:37:57.621780
+
+    let local: DateTime<Local> = Local::now();
+    println!("[DateTime<Local> -> NaiveDateTime] utc: {:?}", utc); // [DateTime<Local> -> NaiveDateTime] utc: 2018-12-09T01:37:57.621780Z
+    let naive: NaiveDateTime = local.naive_local(); // タイムゾーンが+9:00なのでnaive_localとnaive_utcが一致しない。
+    println!("[DateTime<Local> -> NaiveDateTime] naive_local: {:?}", naive); // [DateTime<Local> -> NaiveDateTime] naive_local: 2018-12-09T10:37:57.621796
+    let naive: NaiveDateTime = local.naive_utc();
+    println!("[DateTime<Local> -> NaiveDateTime] naive_utc: {:?}", naive); // [DateTime<Local> -> NaiveDateTime] naive_utc: 2018-12-09T01:37:57.621796
+
+
 }
 
