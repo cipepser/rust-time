@@ -73,5 +73,7 @@ fn main() {
 
     let local: DateTime<Local> = Local.timestamp(1_500_000_000, 0);
     println!("local: {}", local); // local: 2017-07-14 11:40:00 +09:00
+    let timestamp: i64 = local.timestamp();
+    println!("unix time: {}", timestamp); // unix time: 1500000000
 }
 
