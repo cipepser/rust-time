@@ -1,6 +1,6 @@
 extern crate chrono;
 
-use chrono::{Utc, Local, DateTime, Date, NaiveDateTime};
+use chrono::{Utc, Local, DateTime, Date, NaiveDateTime, Duration};
 use chrono::offset::TimeZone;
 use chrono::FixedOffset;
 
@@ -53,7 +53,15 @@ fn main() {
     let local: DateTime<Local> = Local.from_local_datetime(&dt).unwrap();
     println!("{}", local); // 2018-12-07 19:31:28 +09:00
 
-    let offset: DateTime<FixedOffset> = FixedOffset::east(3*3600).from_local_datetime(&dt).unwrap();
+    let offset: DateTime<FixedOffset> = FixedOffset::east(3 * 3600).from_local_datetime(&dt).unwrap();
     println!("{}", offset); // 2018-12-07 19:31:28 +03:00
+
+    let dt1: NaiveDateTime = NaiveDateTime::parse_from_str("2018/12/07 19:31:28", "%Y/%m/%d %H:%M:%S").unwrap();
+    let dt2: NaiveDateTime = NaiveDateTime::parse_from_str("2018/12/07 12:31:28", "%Y/%m/%d %H:%M:%S").unwrap();
+    let duration: Duration = dt1 - dt2;
+
+    println!("secs: {}", duration.num_seconds()); // secs: 25200
+    println!("minutes: {}", duration.num_minutes()); // minutes: 420
+    println!("hours: {}", duration.num_hours()); // hours: 7
 }
 
