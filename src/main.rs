@@ -63,5 +63,7 @@ fn main() {
     println!("secs: {}", duration.num_seconds()); // secs: 25200
     println!("minutes: {}", duration.num_minutes()); // minutes: 420
     println!("hours: {}", duration.num_hours()); // hours: 7
+
+    println!("dt3: {}", dt1 + Duration::hours(3)); // dt3: 2018-12-07 22:31:28
 }
 
