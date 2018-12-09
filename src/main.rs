@@ -65,5 +65,10 @@ fn main() {
     println!("hours: {}", duration.num_hours()); // hours: 7
 
     println!("dt3: {}", dt1 + Duration::hours(3)); // dt3: 2018-12-07 22:31:28
+
+    let local: DateTime<Local> = Local.datetime_from_str("2018/12/07 19:31:28", "%Y/%m/%d %H:%M:%S").unwrap();
+    println!("local: {}", local); // local: 2018-12-07 19:31:28 +09:00
+    let dt4: DateTime<Utc> = local.with_timezone(&Utc);
+    println!("dt4: {}", dt4); // dt4: 2018-12-07 10:31:28 UTC
 }
 
