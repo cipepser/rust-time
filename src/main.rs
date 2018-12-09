@@ -1,6 +1,8 @@
 extern crate chrono;
 
 use chrono::{Utc, Local, DateTime, Date, NaiveDateTime};
+use chrono::offset::TimeZone;
+use chrono::FixedOffset;
 
 fn main() {
     let utc_datetime: DateTime<Utc> = Utc::now();
@@ -43,6 +45,15 @@ fn main() {
     let naive: NaiveDateTime = local.naive_utc();
     println!("[DateTime<Local> -> NaiveDateTime] naive_utc: {:?}", naive); // [DateTime<Local> -> NaiveDateTime] naive_utc: 2018-12-09T01:37:57.621796
 
+    let dt: NaiveDateTime = NaiveDateTime::parse_from_str("2018/12/07 19:31:28", "%Y/%m/%d %H:%M:%S").unwrap();
 
+    let utc: DateTime<Utc> = Utc.from_local_datetime(&dt).unwrap(); // この時点でchrono::offset::TimeZoneが必要
+    println!("{}", utc); // 2018-12-07 19:31:28 UTC
+
+    let local: DateTime<Local> = Local.from_local_datetime(&dt).unwrap();
+    println!("{}", local); // 2018-12-07 19:31:28 +09:00
+
+    let offset: DateTime<FixedOffset> = FixedOffset::east(3*3600).from_local_datetime(&dt).unwrap();
+    println!("{}", offset); // 2018-12-07 19:31:28 +03:00
 }
 
