@@ -25,5 +25,8 @@ fn main() {
     // Naiveであればタイムゾーン情報がなくても扱える
     let dt = NaiveDateTime::parse_from_str("2018/12/07 19:31:28", "%Y/%m/%d %H:%M:%S");
     println!("DateTime::parse_from_str: {:?}", dt); // DateTime::parse_from_str: Ok(2018-12-07T19:31:28)
+
+    let text = Utc::now().format("%Y年%m月%d日 %H時%M分%S秒 %Z").to_string();
+    println!("{}", text);
 }
 
