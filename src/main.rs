@@ -27,6 +27,6 @@ fn main() {
     println!("DateTime::parse_from_str: {:?}", dt); // DateTime::parse_from_str: Ok(2018-12-07T19:31:28)
 
     let text = Utc::now().format("%Y年%m月%d日 %H時%M分%S秒 %Z").to_string();
-    println!("{}", text);
+    println!("{}", text); // 2018年12月09日 01時25分59秒 UTC
 }
 
